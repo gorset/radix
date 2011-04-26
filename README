@@ -1,11 +1,10 @@
 Radix Sort implemented in java and C++ and benchmark code for [0]
 
-The current version lacks a few small optimizations described in [0], which
+The current version lacks a few small optimizations described in [1], which
 could be relevant for sorting arrays with non random values.
 
 Only positive integers are supported, but to make it work with with signed
 integers should be an trivial exercise.
-
 
 [0] http://erik.gorset.no/2011/04/radix-sort-is-faster-than-quicksort.html
 [1] http://ntnu.diva-portal.org/smash/record.jsf?parentRecord=diva2:124514&pid=diva2:124519

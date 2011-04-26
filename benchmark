@@ -1,0 +1,9 @@
+#!/bin/sh -e
+c++ -O3 radix.cc -o radix
+javac Radix.java
+for i in `echo "100 1000 10000 100000 1000000 10000000 100000000 1000000000"`; do
+    echo $i
+    ./radix $i
+    java -cp . -Xmx10G Radix 0 $i
+    java -cp . -Xmx10G Radix 1 $i
+done

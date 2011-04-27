@@ -120,8 +120,8 @@ int main(int argc, char **argv) {
         gettimeofday(&start, NULL);
         switch(i) {
         case 0: std::sort(array, array+N); break;
-        case 1: qsort(array, N, sizeof(int), intcmp);
-        case 2: radix_sort(array, 0, N, 24);
+        case 1: qsort(array, N, sizeof(int), intcmp); break;
+        case 2: radix_sort(array, 0, N, 24); break;
         }
         gettimeofday(&end, NULL);
 

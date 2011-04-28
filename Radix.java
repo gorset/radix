@@ -62,7 +62,7 @@ public class Radix {
             shift -= 8;
             for (int x=0; x<256; ++x) {
                 int size = x > 0 ? pointer[x] - pointer[x-1] : pointer[0] - offset;
-                if (size > 50) {
+                if (size > 64) {
                     sort(array, pointer[x] - size, pointer[x], shift);
                 } else if (size > 1) {
                     insertionSort(array, pointer[x] - size, pointer[x]);

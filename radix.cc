@@ -45,10 +45,9 @@ void insertion_sort(int *array, int offset, int end) {
     }
 }
 
-int radix_sort(int *array, int offset, int end, int shift) {
+void radix_sort(int *array, int offset, int end, int shift) {
     int x, y, value, temp;
-    int last[256], pointer[256];
-    bzero(last, sizeof(int) * 256);
+    int last[256] = { 0 }, pointer[256];
 
     for (x=offset; x<end; ++x) {
         ++last[(array[x] >> shift) & 0xFF];
@@ -79,7 +78,7 @@ int radix_sort(int *array, int offset, int end, int shift) {
         shift -= 8;
         for (x=0; x<256; ++x) {
             temp = x > 0 ? pointer[x] - pointer[x-1] : pointer[0] - offset;
-            if (temp > 50) {
+            if (temp > 64) {
                 radix_sort(array, pointer[x] - temp, pointer[x], shift);
             } else if (temp > 1) {
                 // std::sort(array + (pointer[x] - temp), array + pointer[x]);
@@ -116,7 +115,7 @@ int main(int argc, char **argv) {
         }
 
         struct timeval start, end;
-        long long mtime, seconds, useconds;   
+        time_t mtime, seconds, useconds;   
         gettimeofday(&start, NULL);
         switch(i) {
         case 0: std::sort(array, array+N); break;
@@ -135,7 +134,7 @@ int main(int argc, char **argv) {
 
         seconds  = end.tv_sec  - start.tv_sec;
         useconds = end.tv_usec - start.tv_usec;
-        mtime = seconds * 1000000LL + useconds;
+        mtime = seconds * 1000000 + useconds;
         switch(i) {
         case 0: std::cout << "std::sort " << mtime << "\n"; break;
         case 1: std::cout << "qsort " << mtime << "\n"; break;
